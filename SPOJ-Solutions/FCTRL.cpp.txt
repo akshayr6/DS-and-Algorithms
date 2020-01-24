@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+#define lln long long int
+using namespace std;
+
+int main()
+{
+	lln tc,no,res=0,i=0;
+	
+	cin>> tc;
+	while(tc--)
+	{
+		i=1;
+		res=0;
+		cin>>no;
+		while(no/pow(5,i)>0)
+		{
+			res+=no/pow(5,i);
+			i++;
+		}
+		cout<<res<<endl;
+	}
+	return 0;	
+}
