@@ -6,7 +6,7 @@ void selectionsort(int *a,int n){
 	{
 		int key=a[i];
 		int j=i-1;
-		while(j>=0 && a[j]>key)
+		while(j>=0 && a[j]>key) //move all the elements greater than the key to one position right
 		{
 				a[j+1]=a[j];
 				j--;
