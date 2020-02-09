@@ -1,40 +1,46 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int partition(int *a,int start,int end){
-	int p=end,i=start-1;
-	for(int j=start;j<end;j++) //loop to arrange all the less elements to the left and greater to the right of pivot
+void merge(int *a,int start,int mid,int end){
+	int i=start,j=mid+1,k=0;
+	int temp[end-start+1];
+	while(i<=mid && j<=end)
 	{
-		if(a[j]<a[p])
-		{
-			i++; 
-			swap(a[i],a[j]);
-		}
+		if(a[i]<a[j])
+			temp[k++]=a[i++];
+		else
+			temp[k++]=a[j++];
 	}
-	i++; //move the index to the place for the pivot to be swapped
-	swap(a[i],a[p]);//swap the pivot to the right location
-	return p;	
+	while(i<=mid)
+		temp[k++]=a[i++];
+	while(j<=end)
+		temp[k++]=a[j++];
+		
+	for(int i=0;i<k;i++)
+	a[start+i]=temp[i];
 }
 
-void quicksort(int *a,int start,int end){
+void mergesort(int *a,int start,int end){
+	int mid=start+(end-start)/2;
 	if(start<end)
 	{
-	int p=partition(a,start,end);
-	
-	quicksort(a,start,p-1);
-	quicksort(a,p+1,end);
+	mergesort(a,start,mid);
+	mergesort(a,mid+1,end);
+	merge(a,start,mid,end);
 	}
 }
 
 int main(){
-	cout<<"size \n";
+	cout<<"size";
 	int n;
 	cin>>n;
 	int a[n];
 	for(int i=0;i<n;i++)
-	cin>>a[i];
-	quicksort(a,0,n-1);
+	{
+		cin>>a[i];
+	}
+	mergesort(a,0,n-1);
 	for(int i:a)
 	cout<<i<<" ";
 	return 0;
-}
+	}
