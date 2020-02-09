@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void selectionsort(int *a,int n){
+void insertionsort(int *a,int n){
 	for(int i=0;i<n;i++)
 	{
 		int key=a[i];
@@ -22,7 +22,7 @@ int main(){
 	int a[n];
 	for(int i=0;i<n;i++)
 	cin>>a[i];
-	selectionsort(a,n);
+	insertionsort(a,n);
 	for(int i:a)
 	cout<<i<<" ";
 	return 0;
